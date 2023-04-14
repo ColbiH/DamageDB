@@ -1,31 +1,37 @@
-import React from "react";
+import { useState, useEffect } from 'react';
+import Map from '../components/Map/'
 
-import { Line } from "react-chartjs-2";
-import Chart from 'chart.js/auto';
 
-const data = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  datasets: [
-    {
-      label: "First dataset",
-      data: [33, 53, 85, 41, 44, 65],
-      fill: true,
-      backgroundColor: "rgba(75,192,192,0.2)",
-      borderColor: "rgba(75,192,192,1)"
-    },
-    {
-      label: "Second dataset",
-      data: [33, 25, 35, 51, 54, 76],
-      fill: false,
-      borderColor: "#742774"
-    }
-  ]
-};
 
-export default function App() {
-  return (
-      <div className="App">
-        <Line data={data} />
-      </div>
-  );
+
+export default function HomePage() {
+    const [rowCount, setRowCount] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/cisedb');
+                const data = await response.json();
+                setRowCount(data.rowCount);
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+        fetchData();
+    }, []);
+
+    return (
+        <>
+            <div className="grid col-1 bg-white h-auto w-75 shadow-sm">
+                <Map />
+                {rowCount === null ? (
+                    <p>Loading...</p>
+                ) : (
+                    <p>There are {rowCount} rows in the KYUE.collision table.</p>
+                )}
+            </div>
+        </>
+
+    );
 }
