@@ -8,15 +8,20 @@ const dbConfig = {
 
 export default async function handler(req, res) {
     try {
+        const selectedVehicleType = req.query.vehicletype;
         const connection = await oracledb.getConnection(dbConfig);
-
         const result = await connection.execute(
-            'SELECT COUNT(*) FROM KYUE.collision'
+            "SELECT ZipCode, Count(*) \n" +
+            "FROM KYUE.vehicle v\n" +
+            "JOIN KYUE.collision c ON v.CollisionID = c.CollisionID\n" +
+            "JOIN KYUE.location l ON c.coordinates = l.coordinates\n" +
+            "GROUP BY ZipCode",
         );
 
-        const rowCount = result.rows[0][0];
+        const ZipCode = result.rows.map((row) => row[0]);
+        const Count = result.rows.map((row) => row[1]);
 
-        res.status(200).json({ rowCount });
+        res.status(200).json({ ZipCode , Count});
 
         await connection.close();
     } catch (error) {

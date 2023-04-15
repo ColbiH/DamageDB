@@ -10,7 +10,7 @@ import ZipCodeOverlay from "../../components/Map/ZipCodeOverlay";
 
 
 
-function Map(){
+function Map({ZipCode, Count}){
     return(
         <MapContainer className={styles} center={[40.7420, -73.9073]} fullscreenControl={true} zoom={10} scrollWheelZoom={true}>
             <TileLayer
@@ -18,7 +18,7 @@ function Map(){
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            <ZipCodeOverlay />
+            <ZipCodeOverlay ZipCode={ZipCode} Count={Count} />
         </MapContainer>
 
     );
