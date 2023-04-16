@@ -28,7 +28,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Casualty() {
+export default function Casualty(props) {
     const [selected, setSelected] = useState(people[0])
 
     function handleSelection(selected) {

@@ -7,7 +7,7 @@ const people= [
     {
         id: 1,
         name: 'All',
-        type: '',
+        type: "",
     },
     {
         id: 2,

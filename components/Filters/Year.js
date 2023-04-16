@@ -3,30 +3,56 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 
-const startingId = 1;
-const casualtyTypes = [
-    "All",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-];
+const people= [
+    {
+        id: 1,
+        name: 'All',
+        type: "",
+    },
 
-
-const people = casualtyTypes.map((zipcode, index) => ({
-    id: startingId + index,
-    name: `${zipcode}`,
-}));
-
+    {
+        id: 2,
+        name: '2016',
+        type: 'AND EXTRACT(YEAR FROM CrashDate) = 2016',
+    },
+    {
+        id: 3,
+        name: '2017',
+        type: 'AND EXTRACT(YEAR FROM CrashDate) = 2017',
+    },
+    {
+        id: 4,
+        name: '2018',
+        type: 'AND EXTRACT(YEAR FROM CrashDate) = 2018',
+    },
+    {
+        id: 5,
+        name: '2019',
+        type: 'AND EXTRACT(YEAR FROM CrashDate) = 2019',
+    },
+    {
+        id: 6,
+        name: '2020',
+        type: 'AND EXTRACT(YEAR FROM CrashDate) = 2020',
+    },
+    {
+        id: 7,
+        name: '2021',
+        type: 'AND EXTRACT(YEAR FROM CrashDate) = 2021',
+    },
+    {
+        id: 8,
+        name: '2022',
+        type: 'AND EXTRACT(YEAR FROM CrashDate) = 2022',
+    }
+]
 
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Year() {
+export default function Year(props) {
     const [selected, setSelected] = useState(people[0])
 
     function handleSelection(selected) {

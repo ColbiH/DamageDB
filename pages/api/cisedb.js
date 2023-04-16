@@ -19,11 +19,16 @@ export default async function handler(req, res) {
 
         const connection = await oracledb.getConnection(dbConfig);
         let Where = "";
-        if (selectedVehicleType !== "" || selectedZipCode !== "" || selectedDay !== "" || selectedCasualty !== ""
-            || selectedFactor !== "" || selectedMonth !== "" || selectedTime !== "" || selectedYear !== "") {
-            Where = "WHERE" + selectedVehicleType + selectedZipCode + "\n";
-            Where = Where.replace("AND", "")
+        if (selectedVehicleType.trim() !== "" || selectedYear.trim() !== "") {
+            Where = "WHERE" + selectedVehicleType + selectedYear + "\n";
+            Where = Where.replace("AND", "");
         }
+        console.log("SELECT ZipCode, Count(*) \n" +
+            "FROM KYUE.vehicle v\n" +
+            "JOIN KYUE.collision c ON v.CollisionID = c.CollisionID\n" +
+            "JOIN KYUE.location l ON c.coordinates = l.coordinates\n" +
+            Where +
+            "GROUP BY ZipCode")
         const result = await connection.execute(
             "SELECT ZipCode, Count(*) \n" +
             "FROM KYUE.vehicle v\n" +
