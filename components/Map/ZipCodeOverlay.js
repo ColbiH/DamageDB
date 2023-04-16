@@ -14,10 +14,15 @@ function ZipCodeOverlay(props) {
             console.log(feature.properties.ZipCode);
             const zipCodeNumber = feature.properties.postalCode;
             let count = 0;
-            const index = feature.properties.ZipCode.indexOf(zipCodeNumber);
-            if (index >= 0) {
-                count = feature.properties.Count[index];
+
+            try {
+                const index = feature.properties.ZipCode.indexOf(zipCodeNumber);
+                if (index >= 0) {
+                    count = feature.properties.Count[index];
+                }
+            } catch (error) {
             }
+
             layer.bindPopup(`Zip code: ${zipCodeNumber}<br>Count: ${count}`).openPopup();
         });
     };
