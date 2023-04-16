@@ -11,12 +11,12 @@ const people= [
     },
     {
         id: 2,
-        name: 'Jan',
+        name: 'January',
         type: 'AND EXTRACT(MONTH FROM CrashDate) = 1',
     },
     {
         id: 3,
-        name: 'Feb',
+        name: 'February',
         type: 'AND EXTRACT(MONTH FROM CrashDate) = 2',
     },
     {
@@ -51,22 +51,22 @@ const people= [
     },
     {
         id: 10,
-        name: 'Sept',
+        name: 'September',
         type: 'AND EXTRACT(MONTH FROM CrashDate) = 9',
     },
     {
         id: 11,
-        name: 'Oct',
+        name: 'October',
         type: 'AND EXTRACT(MONTH FROM CrashDate) = 10',
     },
     {
         id: 12,
-        name: 'Nov',
+        name: 'November',
         type: 'AND EXTRACT(MONTH FROM CrashDate) = 11',
     },
     {
         id: 13,
-        name: 'Dec',
+        name: 'December',
         type: 'AND EXTRACT(MONTH FROM CrashDate) = 12',
     }
 ]

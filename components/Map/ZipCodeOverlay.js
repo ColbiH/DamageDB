@@ -13,7 +13,7 @@ function ZipCodeOverlay(props) {
         layer.on('click', (e) => {
             console.log(feature.properties.ZipCode);
             const zipCodeNumber = feature.properties.postalCode;
-            let count = 'unknown';
+            let count = 0;
             const index = feature.properties.ZipCode.indexOf(zipCodeNumber);
             if (index >= 0) {
                 count = feature.properties.Count[index];
@@ -43,7 +43,7 @@ function ZipCodeOverlay(props) {
                 }
                 return {
                     fillColor: '#f00',
-                    fillOpacity: 0.1,
+                    fillOpacity: 0,
                     color: '#000',
                     weight: 1,
                 };

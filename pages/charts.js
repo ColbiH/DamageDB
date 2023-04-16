@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Map from '../components/Map/'
+import LineChart from '../components/Charts/LineChart'
 import Zipcode from "@/components/Filters/Zipcode";
 import Casualty from "@/components/Filters/Casualty";
 import Month from "@/components/Filters/Month";
@@ -15,9 +15,10 @@ import SearchButton from '../components/SearchButton';
 
 
 
-export default function HomePage() {
+export default function ChartsPage() {
     const [ZipCode, setZipCode] = useState(0);
     const [Count, setCount] = useState(0);
+    const [Years, setYears] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedVehicleType, setSelectedVehicleType] = useState("");
     const [selectedZipCode, setSelectedZipCode] = useState("");
@@ -62,9 +63,8 @@ export default function HomePage() {
 
     const handleSearch = async () => {
         setIsLoading(true);
-
         try {
-            const response = await fetch(`/api/cisedb?return=map
+            const response = await fetch(`/api/cisedb?return=chart
             &vehicletype=${selectedVehicleType}
             &zipcode=${selectedZipCode}&day=${selectedDay}&casualtytype=${selectedCasualty}
             &factor=${selectedFactor}&month=${selectedMonth}&time=${selectedTime}
@@ -72,6 +72,7 @@ export default function HomePage() {
             const data = await response.json();
             setZipCode(data.ZipCode);
             setCount(data.Count);
+            setYears(data.Years);
         } catch (error) {
             console.error(error.message);
         }
@@ -81,7 +82,7 @@ export default function HomePage() {
     return (
         <>
             <div className="grid col-1 bg-white h-auto w-75 shadow-sm">
-                <Map ZipCode={ZipCode} Count={Count}/>
+                <LineChart ZipCode={ZipCode} Count={Count} Years={Years}/>
             </div>
             <div className="mt-8 grid lg:grid-cols-5 gap-5 mb-16">
                 <div className="rounded bg-white h-20 shadow-sm">
@@ -89,7 +90,6 @@ export default function HomePage() {
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
                     <Casualty onCasualtyTypeSelect={handleCasualtyTypeSelection}/>
-
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
                     <Year onYearSelect={handleYearSelection}/>

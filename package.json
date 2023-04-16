@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
+    "chart.js": "^4.2.1",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "json-loader": "^0.5.7",

@@ -3,16 +3,57 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 
-const startingId = 1;
-const casualtyTypes = [
-    "All"
-];
+const people= [
+    {
+        id: 1,
+        name: 'All',
+        type: "",
+    },
 
+    {
+        id:2,
+        name: 'Drug Related',
+        type:'AND (ContributingFactor = \'Alcohol Involvement\' or ContributingFactor = \'Drugs (illegal)\' or ContributingFactor = \'Prescription Medication\')'
+    },
+    {
+        id:3,
+        name: 'Car Defect',
+        type:'AND (ContributingFactor = \'Accelerator Defective\' or ContributingFactor = \'Brakes Defective\' or ContributingFactor = \'Steering Failure\' or ContributingFactor = \'Headlights Defective\' or ContributingFactor = \'Windshield Inadequate\' or ContributingFactor = \'Tow Hitch Defective\' or ContributingFactor = \'Tinted Windows\' or ContributingFactor = \'Other Lighting Defects\' or ContributingFactor = \'Tire Failure/Inadequate\')'
+    },
+    {
+        id:4,
+        name: 'Road Defectiveness',
+        type:'AND (ContributingFactor = \'Pavement Defective \' or ContributingFactor = \'Obstruction/Debris\' or ContributingFactor = \'Pavement Slippery\' or ContributingFactor = \'Traffic Control Device Improper/Non-Working\' or ContributingFactor = \'Shoulders Defective/Improper\' or ContributingFactor = \'Lane Marking Improper/Inadequate\')'
+    },
+    {
+        id:5,
+        name: 'Distracted Driving',
+        type:'AND (ContributingFactor = \'Texting\' or ContributingFactor = \'Cell Phone (hand-Held)\' or ContributingFactor = \'Listening/Using Headphones\' or ContributingFactor = \'Eating or Drinking\' or ContributingFactor = \'Outside Car Distraction\' or ContributingFactor = \'Using On Board Navigation Device\' or ContributingFactor = \'Other Electronic Device\' or ContributingFactor = \'Passenger Distraction\' or ContributingFactor = \'Fell Asleep\' or ContributingFactor = \'Cell Phone (hands-free)\' or ContributingFactor = \'Lost Consciousness\' or ContributingFactor = \'Fatigued/Drowsy\' or ContributingFactor = \'Illness\')'
+    },
+    {
+        id:6,
+        name: 'Violating Driving Laws',
+        type:'AND (ContributingFactor = \'Failure to Yield Right-of-Way\' or ContributingFactor = \'Turning Improperly\' or ContributingFactor = \'Traffic Control Disregarded\' or ContributingFactor = \'Unsafe Speed\' or ContributingFactor = \'Vehicle Vandalism\' or ContributingFactor = \'Passing or Lane Usage Improper\' or ContributingFactor = \'Failure to Keep Right\' or ContributingFactor = \'Aggressive Driving/Road Rage\')'
+    },
 
-const people = casualtyTypes.map((zipcode, index) => ({
-    id: startingId + index,
-    name: `${zipcode}`,
-}));
+    {
+        id:7,
+        name: 'Unexpected Hazards',
+        type:'AND (ContributingFactor = \'Glare\' or ContributingFactor = \'Animals Action\' or ContributingFactor = \'Reaction to Uninvolved Vehicle\' or ContributingFactor = \'Pedestrian/Bicyclist/Other Pedestrian Error/Confusion\' or ContributingFactor = \'Driverless/Runaway Vehicle\' or ContributingFactor = \'View Obstructed/Limited\')'
+    },
+
+    {
+        id:8,
+        name: 'Driving Too Close',
+        type:'AND (ContributingFactor = \'Following Too Closely\' or ContributingFactor = \'Passing Too Closely\' or ContributingFactor = \'Unsafe Lane Changing\' or ContributingFactor = \'Backing Unsafely\')'
+    },
+    {
+        id:9,
+        name: 'Other',
+        type:'AND (ContributingFactor = \'Unspecified\' or ContributingFactor = \'Other Vehicular\' or ContributingFactor = \'Driver Inexperience\' or ContributingFactor = \'Oversized Vehicle\' or ContributingFactor = \'Physical Disability\')'
+    },
+]
+
 
 
 

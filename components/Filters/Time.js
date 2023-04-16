@@ -11,128 +11,123 @@ const people= [
     },
     {
         id: 2,
-        name: 0,
+        name: "12:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 0)'
     },
     {
         id: 3,
-        name: 1,
+        name: "1:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 1)'
     },
     {
         id: 4,
-        name: 2,
+        name: "2:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 2)'
     },
     {
         id: 5,
-        name: 3,
+        name: "3:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 3)'
     },
     {
         id: 6,
-        name: 4,
+        name: "4:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 4)'
     },
     {
         id: 7,
-        name: 5,
+        name: "5:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 5)'
     },
     {
         id: 8,
-        name: 6,
+        name: "6:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 6)'
     },
     {
         id: 9,
-        name: 7,
+        name: "7:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 7)'
     },
     {
         id: 10,
-        name: 8,
+        name: "8:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 8)'
     },
     {
         id: 11,
-        name: 9,
+        name: "9:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 9)'
     },
     {
         id: 12,
-        name: 10,
+        name: "10:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 10)'
     },
     {
         id: 13,
-        name: 11,
+        name: "11:00 AM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 11)'
     },
     {
         id: 14,
-        name: 12,
+        name: "12:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 12)'
     },
     {
         id: 15,
-        name: 13,
+        name: "1:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 13)'
     },
     {
         id: 16,
-        name: 14,
+        name: "2:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 14)'
     },
     {
         id: 17,
-        name: 15,
+        name: "3:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 15)'
     },
     {
         id: 18,
-        name: 16,
+        name: "4:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 16)'
     },
     {
         id: 19,
-        name: 17,
+        name: "5:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 17)'
     },
     {
         id: 20,
-        name: 18,
+        name: "6:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 18)'
     },
     {
         id: 21,
-        name: 19,
+        name: "7:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 19)'
     },
     {
         id: 22,
-        name: 20,
+        name: "8:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 20)'
     },
     {
         id: 23,
-        name: 21,
+        name: "9:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 21)'
     },
     {
         id: 24,
-        name: 22,
+        name: "10:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 22)'
     },
     {
         id: 25,
-        name: 23,
+        name: "11:00 PM",
         type: 'AND (EXTRACT(HOUR FROM CrashTime) = 23)'
-    },
-    {
-        id: 26,
-        name: 24,
-        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 24)'
     }
 ]
 

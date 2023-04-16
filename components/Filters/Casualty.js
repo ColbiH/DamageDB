@@ -3,24 +3,54 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 
-const startingId = 1;
-const casualtyTypes = [
-    "All",
-    "Injury",
-    "Killed",
-    "Pedestrian Injured",
-    "Pedestrian Killed",
-    "Cyclist Injured",
-    "Cyclist Killed",
-    "Motorist Injured",
-    "Motorist Killed"
-];
+const people= [
+    {
+        id: 1,
+        name: 'All',
+        type: ""
+    },
+    {
+        id: 2,
+        name: 'Accidents with Injury',
+        type: 'AND (NumberOfPersonsInjured > 0)'
+    },
+    {
+        id: 3,
+        name: 'Accidents with Death',
+        type: 'AND (NumberOfPersonsKilled > 0)'
+    },
+    {
+        id: 4,
+        name: 'Accidents with Pedestrian Injury',
+        type: 'AND (NumberOfPedestriansInjured > 0)'
+    },
+    {
+        id: 5,
+        name: 'Accidents with Pedestrian Death',
+        type: 'AND (NumberOfPedestriansKilled > 0)'
+    },
+    {
+        id: 6,
+        name: 'Accidents with Cyclists Injury',
+        type: 'AND (NumberOfCyclistsInjured > 0)'
+    },
+    {
+        id: 7,
+        name: 'Accidents with Cyclists Death',
+        type: 'AND (NumberOfCyclistsDeath > 0)'
+    },
+    {
+        id: 8,
+        name: 'Accidents with Motorist Injury',
+        type: 'AND (NumberOfMotorists > 0)'
+    },
+    {
+        id: 9,
+        name: 'Accidents with Motorist Death',
+        type: 'AND (NumberOfMotoristsDeath > 0)'
+    }
+]
 
-
-const people = casualtyTypes.map((zipcode, index) => ({
-    id: startingId + index,
-    name: `${zipcode}`,
-}));
 
 
 
