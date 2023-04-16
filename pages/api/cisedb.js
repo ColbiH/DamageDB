@@ -24,9 +24,10 @@ export default async function handler(req, res) {
 
         let Where = "";
         if (selectedVehicleType.trim() !== "" || selectedZipCode.trim() !== "" || selectedDay.trim() !== ""
-            || selectedMonth.trim() !== "" || selectedTime.trim() !== "" || selectedYear.trim() !== "" ) {
-            Where = "WHERE" + selectedVehicleType + selectedZipCode + selectedDay + selectedMonth
-                + selectedTime + selectedYear + "\n";
+            || selectedCasualty.trim() !== "" || selectedFactor.trim() !== "" || selectedMonth.trim() !== ""
+            || selectedTime.trim() !== "" || selectedYear.trim() !== "" ) {
+            Where = "WHERE" + selectedVehicleType + selectedZipCode + selectedDay + selectedCasualty + selectedFactor
+                + selectedMonth + selectedTime + selectedYear + "\n";
             Where = Where.replace("AND", "");
         }
 
