@@ -1,5 +1,6 @@
 import {forwardRef} from "react";
 import Link from "next/link";
+import imgsrc from "../public/apple.png";
 import {UserIcon, ChartBarSquareIcon, MapIcon} from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 
@@ -9,15 +10,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
     return (
         <div ref={ref} className="fixed w-56 h-full bg-white shadow-sm">
             <div className="flex justify-center mt-6 mb-14">
-                <picture>
-                    <img
-                        className="w-32 h-auto"
-                        src="/../public/New-York-Big-Apple.png"
-                        alt="logo"
-                    />
-                </picture>
+                <div style={{ fontSize: '6rem' }}>🍎</div>
             </div>
-
             <div className="flex flex-col">
                 <Link href="/">
                     <div
