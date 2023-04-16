@@ -20,13 +20,12 @@ export default function HomePage() {
     const [Count, setCount] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedVehicleType, setSelectedVehicleType] = useState("");
-    const [selectedZipCode, setSelectedZipCode] = useState("default");
-
-    const [selectedDay, setSelectedDay] = useState("default");
-    const [selectedCasualty, setSelectedCasualty] = useState("default");
-    const [selectedFactor, setSelectedFactor] = useState("default");
-    const [selectedMonth, setSelectedMonth] = useState("default");
-    const [selectedTime, setSelectedTime] = useState("default");
+    const [selectedZipCode, setSelectedZipCode] = useState("");
+    const [selectedDay, setSelectedDay] = useState("");
+    const [selectedCasualty, setSelectedCasualty] = useState("");
+    const [selectedFactor, setSelectedFactor] = useState("");
+    const [selectedMonth, setSelectedMonth] = useState("");
+    const [selectedTime, setSelectedTime] = useState("");
     const [selectedYear, setSelectedYear] = useState("");
 
     function handleVehicleTypeSelection(selected) {

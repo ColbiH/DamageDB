@@ -3,43 +3,139 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 
-const startingId = 1;
-const casualtyTypes = [
-    "All",
-    "12am",
-    "1am",
-    "2am",
-    "3am",
-    "4am",
-    "5am",
-    "6am",
-    "7am",
-    "8am",
-    "9am",
-    "10am",
-    "11am",
-    "12pm",
-    "1pm",
-    "2pm",
-    "3pm",
-    "4pm",
-    "5pm",
-    "6pm",
-    "7pm",
-    "8pm",
-    "9pm",
-    "10pm",
-    "11pm"
-];
+const people= [
+    {
+        id: 1,
+        name: 'All',
+        type: "",
+    },
+    {
+        id: 2,
+        name: 0,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 0)'
+    },
+    {
+        id: 3,
+        name: 1,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 1)'
+    },
+    {
+        id: 4,
+        name: 2,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 2)'
+    },
+    {
+        id: 5,
+        name: 3,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 3)'
+    },
+    {
+        id: 6,
+        name: 4,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 4)'
+    },
+    {
+        id: 7,
+        name: 5,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 5)'
+    },
+    {
+        id: 8,
+        name: 6,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 6)'
+    },
+    {
+        id: 9,
+        name: 7,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 7)'
+    },
+    {
+        id: 10,
+        name: 8,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 8)'
+    },
+    {
+        id: 11,
+        name: 9,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 9)'
+    },
+    {
+        id: 12,
+        name: 10,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 10)'
+    },
+    {
+        id: 13,
+        name: 11,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 11)'
+    },
+    {
+        id: 14,
+        name: 12,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 12)'
+    },
+    {
+        id: 15,
+        name: 13,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 13)'
+    },
+    {
+        id: 16,
+        name: 14,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 14)'
+    },
+    {
+        id: 17,
+        name: 15,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 15)'
+    },
+    {
+        id: 18,
+        name: 16,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 16)'
+    },
+    {
+        id: 19,
+        name: 17,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 17)'
+    },
+    {
+        id: 20,
+        name: 18,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 18)'
+    },
+    {
+        id: 21,
+        name: 19,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 19)'
+    },
+    {
+        id: 22,
+        name: 20,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 20)'
+    },
+    {
+        id: 23,
+        name: 21,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 21)'
+    },
+    {
+        id: 24,
+        name: 22,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 22)'
+    },
+    {
+        id: 25,
+        name: 23,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 23)'
+    },
+    {
+        id: 26,
+        name: 24,
+        type: 'AND (EXTRACT(HOUR FROM CrashTime) = 24)'
+    }
+]
 
-
-
-
-
-const people = casualtyTypes.map((zipcode, index) => ({
-    id: startingId + index,
-    name: `${zipcode}`,
-}));
 
 
 
@@ -47,7 +143,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Time() {
+export default function Time(props) {
     const [selected, setSelected] = useState(people[0])
 
     function handleSelection(selected) {

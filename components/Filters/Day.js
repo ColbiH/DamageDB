@@ -3,49 +3,170 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 
-const startingId = 1;
-const casualtyTypes = [
-    "All",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "20",
-    "21",
-    "22",
-    "23",
-    "24",
-    "25",
-    "26",
-    "27",
-    "28",
-    "29",
-    "30",
-    "31",
-];
+const people= [
+    {
+        id: 1,
+        name: 'All',
+        type: "",
+    },
 
+    {
+        id: 2,
+        name: 1,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 1)'
+    },
+    {
+        id: 3,
+        name: 2,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 2)'
+    },
+    {
+        id: 4,
+        name: 3,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 3)'
+    },
+    {
+        id: 5,
+        name: 4,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 4)'
+    },
+    {
+        id: 6,
+        name: 5,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 5)'
+    },
+    {
+        id: 7,
+        name: 6,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 6)'
+    },
+    {
+        id: 8,
+        name: 7,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 7)'
+    },
+    {
+        id: 9,
+        name: 8,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 8)'
+    },
+    {
+        id: 10,
+        name: 9,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 9)'
+    },
+    {
+        id: 11,
+        name: 10,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 10)'
+    },
+    {
+        id: 12,
+        name: 11,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 11)'
+    },
+    {
+        id: 13,
+        name: 12,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 12)'
+    },
+    {
+        id: 14,
+        name: 13,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 13)'
+    },
+    {
+        id: 15,
+        name: 14,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 14)'
+    },
+    {
+        id: 16,
+        name: 15,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 15)'
+    },
+    {
+        id: 17,
+        name: 16,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 16)'
+    },
+    {
+        id: 18,
+        name: 17,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 17)'
+    },
+    {
+        id: 19,
+        name: 18,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 18)'
+    },
+    {
+        id: 20,
+        name: 19,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 19)'
+    },
+    {
+        id: 21,
+        name: 20,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 20)'
+    },
+    {
+        id: 22,
+        name: 21,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 21)'
+    },
+    {
+        id: 23,
+        name: 22,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 22)'
+    },
+    {
+        id: 24,
+        name: 23,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 23)'
+    },
+    {
+        id: 25,
+        name: 24,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 24)'
+    },
+    {
+        id: 26,
+        name: 25,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 25)'
+    },
+    {
+        id: 27,
+        name: 26,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 26)'
+    },
+    {
+        id: 28,
+        name: 27,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 27)'
+    },
+    {
+        id: 29,
+        name: 28,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 28)'
+    },
+    {
+        id: 30,
+        name: 29,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 29)'
+    },
+    {
+        id: 31,
+        name: 30,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 30)'
+    },
+    {
+        id: 32,
+        name: 31,
+        type: 'AND (EXTRACT(DAY FROM CrashDate) = 31)'
+    }
+]
 
-
-
-const people = casualtyTypes.map((zipcode, index) => ({
-    id: startingId + index,
-    name: `${zipcode}`,
-}));
 
 
 
@@ -53,7 +174,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Day() {
+export default function Day(props) {
     const [selected, setSelected] = useState(people[0])
 
     function handleSelection(selected) {

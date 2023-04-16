@@ -19,8 +19,10 @@ export default async function handler(req, res) {
 
         const connection = await oracledb.getConnection(dbConfig);
         let Where = "";
-        if (selectedVehicleType.trim() !== "" || selectedYear.trim() !== "") {
-            Where = "WHERE" + selectedVehicleType + selectedYear + "\n";
+        if (selectedVehicleType.trim() !== "" || selectedZipCode.trim() !== "" || selectedDay.trim() !== ""
+            || selectedMonth.trim() !== "" || selectedTime.trim() !== "" || selectedYear.trim() !== "" ) {
+            Where = "WHERE" + selectedVehicleType + selectedZipCode + selectedDay + selectedMonth
+                + selectedTime + selectedYear + "\n";
             Where = Where.replace("AND", "");
         }
         console.log("SELECT ZipCode, Count(*) \n" +

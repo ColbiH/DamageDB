@@ -20,7 +20,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Factor() {
+export default function Factor(props) {
     const [selected, setSelected] = useState(people[0])
 
     function handleSelection(selected) {

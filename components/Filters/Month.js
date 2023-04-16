@@ -3,37 +3,80 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 
-const startingId = 1;
-const casualtyTypes = [
-    "All",
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-];
-
-
-
-const people = casualtyTypes.map((zipcode, index) => ({
-    id: startingId + index,
-    name: `${zipcode}`,
-}));
-
+const people= [
+    {
+        id: 1,
+        name: 'All',
+        type: "",
+    },
+    {
+        id: 2,
+        name: 'Jan',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 1',
+    },
+    {
+        id: 3,
+        name: 'Feb',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 2',
+    },
+    {
+        id: 4,
+        name: 'March',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 3',
+    },
+    {
+        id: 5,
+        name: 'April',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 4',
+    },
+    {
+        id: 6,
+        name: 'May',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 5',
+    },
+    {
+        id: 7,
+        name: 'June',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 6',
+    },
+    {
+        id: 8,
+        name: 'July',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 7',
+    },
+    {
+        id: 9,
+        name: 'August',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 8',
+    },
+    {
+        id: 10,
+        name: 'Sept',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 9',
+    },
+    {
+        id: 11,
+        name: 'Oct',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 10',
+    },
+    {
+        id: 12,
+        name: 'Nov',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 11',
+    },
+    {
+        id: 13,
+        name: 'Dec',
+        type: 'AND EXTRACT(MONTH FROM CrashDate) = 12',
+    }
+]
 
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Month() {
+export default function Month(props) {
     const [selected, setSelected] = useState(people[0])
 
     function handleSelection(selected) {
