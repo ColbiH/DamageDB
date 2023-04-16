@@ -9,19 +9,16 @@ import Time from "@/components/Filters/Time";
 import Vehicle from "@/components/Filters/Vehicle";
 import Factor from "@/components/Filters/Factor";
 import SearchButton from '../components/SearchButton';
-
-
-
-
-
+import TupleButton from "@/components/TupleButton";
 
 export default function ChartsPage() {
     const [ZipCode, setZipCode] = useState(0);
     const [Count, setCount] = useState(0);
     const [Years, setYears] = useState(0);
+    const [Tuple, setTuple] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedVehicleType, setSelectedVehicleType] = useState("");
-    const [selectedZipCode, setSelectedZipCode] = useState("");
+    const [selectedZipCode, setSelectedZipCode] = useState("AND (l.ZipCode = '10000')");
     const [selectedDay, setSelectedDay] = useState("");
     const [selectedCasualty, setSelectedCasualty] = useState("");
     const [selectedFactor, setSelectedFactor] = useState("");
@@ -79,6 +76,20 @@ export default function ChartsPage() {
         setIsLoading(false);
     };
 
+    const handleTupleCount = async () => {
+        setIsLoading(true);
+        try {
+            const response = await fetch(`/api/cisedb?return=tuple`);
+            const data = await response.json();
+            setTuple(data.Tuple);
+            alert("Tuple Count: " + data.Tuple);
+        } catch (error) {
+            console.error(error.message);
+        }
+
+        setIsLoading(false);
+    };
+
     return (
         <>
             <div className="grid col-1 bg-white h-auto w-75 shadow-sm">
@@ -114,18 +125,10 @@ export default function ChartsPage() {
                     <Vehicle onVehicleTypeSelect={handleVehicleTypeSelection}/>
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
-
+                    <TupleButton onTuple={handleTupleCount} />
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
                     <div>
-                        {isLoading ? (
-                            <p>Loading...</p>
-                        ) : ZipCode ? (
-                            <p>Number of rows: {ZipCode}</p>
-                        ) : (
-                            <p>Click the button to get the number of rows</p>
-                        )}
-
                         <SearchButton onSearch={handleSearch} />
                     </div>
                 </div>

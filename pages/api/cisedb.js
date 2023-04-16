@@ -9,7 +9,6 @@ const dbConfig = {
 export default async function handler(req, res) {
     try {
         const selectedReturnType = req.query.return;
-        console.log("return: " + selectedReturnType);
         const selectedVehicleType = req.query.vehicletype;
         const selectedZipCode = req.query.zipcode;
         const selectedDay = req.query.day;
@@ -23,15 +22,16 @@ export default async function handler(req, res) {
 
 
         let Where = "";
-        if (selectedVehicleType.trim() !== "" || selectedZipCode.trim() !== "" || selectedDay.trim() !== ""
-            || selectedCasualty.trim() !== "" || selectedFactor.trim() !== "" || selectedMonth.trim() !== ""
-            || selectedTime.trim() !== "" || selectedYear.trim() !== "" ) {
-            Where = "WHERE" + selectedVehicleType + selectedZipCode + selectedDay + selectedCasualty + selectedFactor
-                + selectedMonth + selectedTime + selectedYear + "\n";
-            Where = Where.replace("AND", "");
-        }
+
 
         if(selectedReturnType.trim() === "map"){
+            if (selectedVehicleType.trim() !== "" || selectedZipCode.trim() !== "" || selectedDay.trim() !== ""
+                || selectedCasualty.trim() !== "" || selectedFactor.trim() !== "" || selectedMonth.trim() !== ""
+                || selectedTime.trim() !== "" || selectedYear.trim() !== "" ) {
+                Where = "WHERE" + selectedVehicleType + selectedZipCode + selectedDay + selectedCasualty + selectedFactor
+                    + selectedMonth + selectedTime + selectedYear + "\n";
+                Where = Where.replace("AND", "");
+            }
             console.log("SELECT ZipCode, Count(*) \n" +
                 "FROM KYUE.vehicle v\n" +
                 "JOIN KYUE.collision c ON v.CollisionID = c.CollisionID\n" +
@@ -51,6 +51,13 @@ export default async function handler(req, res) {
 
             res.status(200).json({ ZipCode , Count});
         } else if (selectedReturnType.trim() === "chart"){
+            if (selectedVehicleType.trim() !== "" || selectedZipCode.trim() !== "" || selectedDay.trim() !== ""
+                || selectedCasualty.trim() !== "" || selectedFactor.trim() !== "" || selectedMonth.trim() !== ""
+                || selectedTime.trim() !== "" || selectedYear.trim() !== "" ) {
+                Where = "WHERE" + selectedVehicleType + selectedZipCode + selectedDay + selectedCasualty + selectedFactor
+                    + selectedMonth + selectedTime + selectedYear + "\n";
+                Where = Where.replace("AND", "");
+            }
             const result = await connection.execute(
                 "SELECT ZipCode, Count(*), EXTRACT(YEAR FROM c.CrashDate) \n" +
                 "FROM KYUE.vehicle v\n" +
@@ -64,8 +71,18 @@ export default async function handler(req, res) {
             const Count = result.rows.map((row) => row[1]);
             const Years = result.rows.map((row) => row[2]);
             res.status(200).json({ ZipCode , Count, Years});
-        }
+        } else if (selectedReturnType === "tuple"){
 
+            const result = await connection.execute(
+                "SELECT Count(*) \n" +
+                "FROM KYUE.vehicle v\n" +
+                "JOIN KYUE.collision c ON v.CollisionID = c.CollisionID\n" +
+                "JOIN KYUE.location l ON c.coordinates = l.coordinates\n" +
+                Where
+            );
+            const Tuple = result.rows.map((row) => row[0]);
+            res.status(200).json({Tuple});
+        }
         await connection.close();
     } catch (error) {
         console.error(error.message);

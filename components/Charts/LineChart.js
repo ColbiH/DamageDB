@@ -43,8 +43,23 @@ const LineGraph = ({ ZipCode, Count, Years }) => {
         datasets.push({
             label: `Zip Code ${zipCode}`,
             data,
-            fill: false,
-            borderColor: `rgb(${zipCode * 50}, 0, 0)`,
+            fill: true,
+            lineTension: 0.1,
+            backgroundColor: 'rgba(75,192,192,0.4)',
+            borderColor: 'rgba(75,192,192,1)',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
         });
     }
 
@@ -54,8 +69,8 @@ const LineGraph = ({ ZipCode, Count, Years }) => {
     };
 
     return (
-        <div>
-            <Line data={data} width={400} height={400} />
+        <div style={{ width: '1200px', height: '600px', margin: '0 auto' }}>
+            <Line data={data} />
         </div>
     );
 };
