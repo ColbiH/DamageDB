@@ -19,18 +19,56 @@ export default function HomePage() {
     const [ZipCode, setZipCode] = useState(0);
     const [Count, setCount] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
-    const [selectedVehicleType, setSelectedVehicleType] = useState('all');
+    const [selectedVehicleType, setSelectedVehicleType] = useState('');
+    const [selectedZipCode, setSelectedZipCode] = useState('');
+
+    const [selectedDay, setSelectedDay] = useState('');
+    const [selectedCasualty, setSelectedCasualty] = useState('');
+    const [selectedFactor, setSelectedFactor] = useState('');
+    const [selectedMonth, setSelectedMonth] = useState('');
+    const [selectedTime, setSelectedTime] = useState('');
+    const [selectedYear, setSelectedYear] = useState('');
 
     function handleVehicleTypeSelection(selected) {
         setSelectedVehicleType(selected);
+    }
+
+    function handleZipCodeSelection(selected) {
+        setSelectedZipCode(selected);
+    }
+
+    function handleDaySelection(selected) {
+        setSelectedDay(selected);
+    }
+
+    function handleCasualtyTypeSelection(selected) {
+        setSelectedCasualty(selected);
+    }
+
+    function handleFactorSelection(selected) {
+        setSelectedFactor(selected);
+    }
+
+    function handleMonthSelection(selected) {
+        setSelectedMonth(selected);
+    }
+
+    function handleTimeSelection(selected) {
+        setSelectedTime(selected);
+    }
+
+    function handleYearSelection(selected) {
+        setSelectedYear(selected);
     }
 
     const handleSearch = async () => {
         setIsLoading(true);
 
         try {
-            console.log(selectedVehicleType); // log the selected vehicle type to the console
-            const response = await fetch(`/api/cisedb?vehicletype=${selectedVehicleType}`);
+            const response = await fetch(`/api/cisedb?vehicletype=${selectedVehicleType}
+            &zipcode=${selectedZipCode}&day=${selectedDay}&casualtytype=${selectedCasualty}
+            &factor=${selectedFactor}&month=${selectedMonth}&time=${selectedTime}
+            &year=${selectedYear}`);
             const data = await response.json();
             setZipCode(data.ZipCode);
             setCount(data.Count);
@@ -47,30 +85,30 @@ export default function HomePage() {
             </div>
             <div className="mt-8 grid lg:grid-cols-5 gap-5 mb-16">
                 <div className="rounded bg-white h-20 shadow-sm">
-                    <Zipcode/>
+                    <Zipcode onZipCodeSelect={handleZipCodeSelection}/>
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
-                    <Casualty/>
+                    <Casualty onCasualtyTypeSelect={handleCasualtyTypeSelection}/>
 
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
-                    <Year/>
+                    <Year onYearSelect={handleYearSelection}/>
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
-                    <Month/>
+                    <Month onMonthSelect={handleMonthSelection}/>
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
-                    <Day/>
+                    <Day onDaySelect={handleDaySelection}/>
                 </div>
             </div>
 
             <div className="mt-8 grid lg:grid-cols-5 gap-5 mb-16">
 
                 <div className="rounded bg-white h-20 shadow-sm">
-                    <Time/>
+                    <Time onTimeSelect={handleTimeSelection}/>
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
-                    <Factor/>
+                    <Factor onFactorSelect={handleFactorSelection}/>
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
                     <Vehicle onVehicleTypeSelect={handleVehicleTypeSelection}/>

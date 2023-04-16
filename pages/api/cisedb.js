@@ -9,15 +9,29 @@ const dbConfig = {
 export default async function handler(req, res) {
     try {
         const selectedVehicleType = req.query.vehicletype;
+        const selectedZipCode = req.query.zipcode;
+        const selectedDay = req.query.day;
+        const selectedCasualty = req.query.casualtytype;
+        const selectedFactor = req.query.factor;
+        const selectedMonth = req.query.month;
+        const selectedTime = req.query.time;
+        const selectedYear = req.query.year;
+
         const connection = await oracledb.getConnection(dbConfig);
+        let Where = "";
+        if (selectedVehicleType !== "" || selectedZipCode !== "" || selectedDay !== "" || selectedCasualty !== ""
+            || selectedFactor !== "" || selectedMonth !== "" || selectedTime !== "" || selectedYear !== "") {
+            Where = "WHERE" + selectedVehicleType + selectedZipCode + "\n";
+            Where = Where.replace("AND", "")
+        }
         const result = await connection.execute(
             "SELECT ZipCode, Count(*) \n" +
             "FROM KYUE.vehicle v\n" +
             "JOIN KYUE.collision c ON v.CollisionID = c.CollisionID\n" +
             "JOIN KYUE.location l ON c.coordinates = l.coordinates\n" +
-            "GROUP BY ZipCode",
+            Where +
+            "GROUP BY ZipCode"
         );
-
         const ZipCode = result.rows.map((row) => row[0]);
         const Count = result.rows.map((row) => row[1]);
 

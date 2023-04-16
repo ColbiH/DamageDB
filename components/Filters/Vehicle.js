@@ -3,19 +3,62 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 
-const startingId = 1;
-const casualtyTypes = [
-    "All",
-    "Sedan",
-    "Truck",
-    "Moped"
-];
+const people= [
+    {
+        id: 1,
+        name: 'All',
+        type: '',
+    },
+    {
+        id: 2,
+        name: 'Sedan',
+        type: 'AND (v.type = \'Sedan\')',
+    },
 
-const people = casualtyTypes.map((casualtyType, index) => ({
-    id: startingId + index,
-    name: casualtyType,
-    type: startingId + index === 1 ? "*" : casualtyType.toLowerCase()
-}));
+
+    {
+        id: 3,
+        name: 'Station Wagon/SUV',
+        type: 'AND (v.type = \'Station Wagon/Sport Utility v\')',
+    },
+    {
+        id: 4,
+        name: 'Van',
+        type: 'AND (v.type = \'Van\')',
+    },
+    {
+        id: 5,
+        name: 'Motorcycle',
+        type: 'AND (v.type = \'Motorcycle\')',
+    },
+    {
+        id: 6,
+        name: 'Bus',
+        type: 'AND (v.type = \'Bus\')',
+    },
+    {
+        id: 7,
+        name: 'Truck ',
+        type: 'AND (v.type = \'Box Truck\' or v.type = \'Pick-up Truck\' or v.type =  \'Tractor Truck\')',
+    },
+    {
+        id: 8,
+        name: 'Bike',
+        type: 'AND (v.type = \'Bike\' or v.type = \'E-Bike\')',
+    },
+    {
+        id: 9,
+        name: 'Taxi',
+        type: 'AND (v.type = \'Taxi\')',
+    },
+    {
+        id: 10,
+        name: 'Other',
+        type: 'AND (v.type != \'Taxi\' AND v.type != \'E-Bike\' AND v.type != \'Bike\' AND v.type != \'Box Truck\' AND v.type != \'Pick-up Truck\' AND v.type !=  \'Tractor Truck\' AND v.type != \'Bus\' AND v.type != \'Motorcycle\' AND v.type != \'Van\' AND v.type != \'Station Wagon/Sport Utility v\' AND v.type != \'Sedan\')',
+    }
+]
+
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')

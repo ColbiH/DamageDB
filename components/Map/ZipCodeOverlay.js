@@ -5,25 +5,33 @@ import React from "react";
 
 function ZipCodeOverlay(props) {
     const { ZipCode, Count } = props;
+    console.log(ZipCode);
+    console.log(Count);
     const maxCount = Count.length > 0 ? Math.max(...Count) : 1;
 
-    const onEachFeature = (feature, layer, ZipCode, Count) => {
+    const onEachFeature = (feature, layer) => {
         layer.on('click', (e) => {
-            console.log(ZipCode);
+            console.log(feature.properties.ZipCode);
             const zipCodeNumber = feature.properties.postalCode;
             let count = 'unknown';
-            const index = ZipCode.indexOf(zipCodeNumber);
+            const index = feature.properties.ZipCode.indexOf(zipCodeNumber);
+            if (index >= 0) {
+                count = feature.properties.Count[index];
+            }
             layer.bindPopup(`Zip code: ${zipCodeNumber}<br>Count: ${count}`).openPopup();
         });
     };
 
+
     return (
         <GeoJSON
             data={zipCodes}
-            onEachFeature={(feature, layer) => onEachFeature(feature, layer, ZipCode, Count)}
+            onEachFeature={onEachFeature}
             style={(feature) => {
                 if (Array.isArray(ZipCode)) {
                     const index = ZipCode.indexOf(feature.properties.postalCode);
+                    feature.properties.Count = Count;
+                    feature.properties.ZipCode = ZipCode;
                     if (index >= 0) {
                         return {
                             fillColor: '#f00',
@@ -40,6 +48,8 @@ function ZipCodeOverlay(props) {
                     weight: 1,
                 };
             }}
+            ZipCode={ZipCode}
+            Count={Count}
         />
     );
 }

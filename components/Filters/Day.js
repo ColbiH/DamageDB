@@ -56,8 +56,15 @@ function classNames(...classes) {
 export default function Day() {
     const [selected, setSelected] = useState(people[0])
 
+    function handleSelection(selected) {
+        setSelected(selected);
+        if (props.onDaySelect) {
+            props.onDaySelect(selected.type);
+        }
+    }
+
     return (
-        <Listbox value={selected} onChange={setSelected}>
+        <Listbox value={selected} onChange={handleSelection}>
             {({ open }) => (
                 <>
                     <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 text-center">Day</Listbox.Label>
