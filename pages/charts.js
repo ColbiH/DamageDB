@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import LineChart from '../components/Charts/LineChart'
-import Zipcode from "@/components/Filters/Zipcode";
+import ZipcodeChart from "@/components/Filters/ZipcodeChart";
 import Casualty from "@/components/Filters/Casualty";
 import Month from "@/components/Filters/Month";
 import Year from "@/components/Filters/Year";
@@ -97,7 +97,7 @@ export default function ChartsPage() {
             </div>
             <div className="mt-8 grid lg:grid-cols-5 gap-5 mb-16">
                 <div className="rounded bg-white h-20 shadow-sm">
-                    <Zipcode onZipCodeSelect={handleZipCodeSelection}/>
+                    <ZipcodeChart onZipCodeSelect={handleZipCodeSelection}/>
                 </div>
                 <div className="rounded bg-white h-20 shadow-sm">
                     <Casualty onCasualtyTypeSelect={handleCasualtyTypeSelection}/>
