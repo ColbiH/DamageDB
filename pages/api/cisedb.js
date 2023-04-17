@@ -74,10 +74,11 @@ export default async function handler(req, res) {
         } else if (selectedReturnType === "tuple"){
 
             const result = await connection.execute(
-                "SELECT Count(*) \n" +
-                "FROM KYUE.vehicle v\n" +
-                "JOIN KYUE.collision c ON v.CollisionID = c.CollisionID\n" +
-                "JOIN KYUE.location l ON c.coordinates = l.coordinates\n" +
+                "SELECT\n" +
+                "\n" +
+                "(SELECT COUNT(*) FROM KYUE.Location) + (SELECT COUNT(*) FROM KYUE.Collision) + (SELECT COUNT(*) FROM KYUE.Vehicle)\n" +
+                "\n" +
+                "FROM dual" +
                 Where
             );
             const Tuple = result.rows.map((row) => row[0]);
